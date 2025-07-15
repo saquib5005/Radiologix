@@ -1,38 +1,254 @@
-.App {
-    text-align: center;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
 }
 
-.App-link {
-    color: #61dafb;
+/* Custom animations */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.glow-effect {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Medical theme gradients */
+.medical-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.radiology-gradient {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.scan-gradient {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Futuristic button styles */
+.btn-futuristic {
+  @apply relative overflow-hidden transform transition-all duration-300 ease-in-out;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-futuristic:hover {
+  @apply scale-105;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn-futuristic:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-futuristic:hover:before {
+  left: 100%;
+}
+
+/* Dark mode utilities */
+.dark {
+  color-scheme: dark;
+}
+
+/* Custom focus styles */
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-gray-900;
+}
+
+/* Responsive image containers */
+.image-container {
+  @apply relative overflow-hidden rounded-lg;
+}
+
+.image-container img {
+  @apply w-full h-full object-cover transition-transform duration-300;
+}
+
+.image-container:hover img {
+  @apply scale-110;
+}
+
+/* Loading animation */
+.loading-spinner {
+  @apply animate-spin rounded-full border-4 border-gray-300 border-t-blue-600;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl;
+}
+
+/* Text glow effect */
+.text-glow {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Medical theme specific styles */
+.medical-card {
+  @apply bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.medical-card:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+}
+
+/* Futuristic input styles */
+.futuristic-input {
+  @apply bg-transparent border-2 border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-gray-900 dark:text-white;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.futuristic-input:focus {
+  @apply outline-none border-blue-500 dark:border-blue-400;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Scan upload area */
+.upload-area {
+  @apply border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-8 text-center;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05));
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  @apply border-blue-500 dark:border-blue-400;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+}
+
+.upload-area.dragover {
+  @apply border-blue-500 dark:border-blue-400;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(147, 51, 234, 0.15));
+}
+
+/* Report display styles */
+.report-container {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.report-header {
+  @apply border-b border-gray-200 dark:border-gray-700 pb-4 mb-6;
+}
+
+.report-section {
+  @apply mb-6;
+}
+
+.report-section h3 {
+  @apply text-lg font-semibold text-gray-900 dark:text-white mb-2;
+  color: #667eea;
+}
+
+.report-content {
+  @apply text-gray-700 dark:text-gray-300 leading-relaxed;
+}
+
+/* Status indicators */
+.status-indicator {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.status-success {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300;
+}
+
+.status-processing {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300;
+}
+
+.status-error {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    @apply text-center;
+  }
+  
+  .feature-grid {
+    @apply grid-cols-1 gap-6;
+  }
+  
+  .scan-grid {
+    @apply grid-cols-1 sm:grid-cols-2 gap-4;
+  }
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-futuristic {
+    border: 2px solid currentColor;
+  }
+  
+  .medical-card {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
 }
