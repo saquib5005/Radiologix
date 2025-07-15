@@ -207,9 +207,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "User Authentication System"
-    - "API Endpoints"
-    - "Scan Upload and Processing"
+    - "User Interface and Navigation"
+    - "Authentication UI"
+    - "Scan Upload Interface"
+    - "Dark/Light Mode Toggle"
   stuck_tasks: []
   test_all: true
   test_priority: "high_first"
